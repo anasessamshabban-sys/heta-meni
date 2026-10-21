@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-cobalt: #2455D6;
+    --color-orange: #F26B38;
+    --color-red: #E8473F;
+    --color-green: #48A868;
+    --color-yellow: #F5C542;
+    --color-ivory: #FFF4E4;
+    --color-navy: #182B49;
+    --color-paper: #FAF0DF;
+  }
+
+  body {
+    font-family: 'Readex Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--color-ivory);
+    color: var(--color-navy);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Cairo', 'Readex Pro', sans-serif;
+  }
+}
+
+/* Paper Craft & Collage Visual System */
+.bg-paper-grid {
+  background-image: 
+    radial-gradient(#182B49 0.75px, transparent 0.75px), 
+    linear-gradient(to right, rgba(24, 43, 73, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(24, 43, 73, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px, 24px 24px, 24px 24px;
+}
+
+.bg-halftone-dots {
+  background-image: radial-gradient(currentColor 1.2px, transparent 1.2px);
+  background-size: 8px 8px;
+}
+
+/* Torn paper edge generators */
+.torn-edge-b {
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100% calc(100% - 10px),
+    98% 100%, 96% calc(100% - 7px), 94% calc(100% - 2px), 91% calc(100% - 9px), 88% 100%,
+    85% calc(100% - 6px), 82% calc(100% - 1px), 79% calc(100% - 8px), 75% calc(100% - 3px),
+    71% 100%, 67% calc(100% - 7px), 63% calc(100% - 2px), 59% calc(100% - 9px), 55% 100%,
+    51% calc(100% - 6px), 47% calc(100% - 1px), 43% calc(100% - 8px), 39% calc(100% - 3px),
+    35% 100%, 31% calc(100% - 7px), 27% calc(100% - 2px), 23% calc(100% - 9px), 19% 100%,
+    15% calc(100% - 6px), 11% calc(100% - 1px), 7% calc(100% - 8px), 3% calc(100% - 3px), 0% 100%
+  );
+}
+
+.torn-edge-t {
+  clip-path: polygon(
+    0% 10px, 3% 2px, 7% 9px, 11% 1px, 15% 8px, 19% 3px, 23% 9px, 27% 2px, 31% 8px,
+    35% 1px, 39% 7px, 43% 2px, 47% 9px, 51% 3px, 55% 8px, 59% 1px, 63% 9px, 67% 2px,
+    71% 8px, 75% 3px, 79% 9px, 82% 1px, 85% 7px, 88% 2px, 91% 9px, 94% 3px, 96% 8px,
+    98% 1px, 100% 10px, 100% 100%, 0% 100%
+  );
+}
+
+.paper-shadow {
+  box-shadow: 
+    3px 4px 0px 0px #182B49,
+    6px 8px 16px -2px rgba(24, 43, 73, 0.16);
+}
+
+.paper-shadow-lg {
+  box-shadow: 
+    5px 6px 0px 0px #182B49,
+    10px 14px 24px -3px rgba(24, 43, 73, 0.22);
+}
+
+.paper-shadow-sm {
+  box-shadow: 2px 2px 0px 0px #182B49;
+}
+
+.stamp-border {
+  border: 3px dashed #182B49;
+}
+
+/* Tape effect */
+.washi-tape-yellow {
+  background: rgba(245, 197, 66, 0.85);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  backdrop-filter: blur(1px);
+  clip-path: polygon(0 0, 100% 2%, 99% 98%, 1% 100%);
+}
+
+.washi-tape-orange {
+  background: rgba(242, 107, 56, 0.85);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  backdrop-filter: blur(1px);
+  clip-path: polygon(1% 0, 99% 1%, 100% 100%, 0 99%);
+}
+
+.washi-tape-blue {
+  background: rgba(36, 85, 214, 0.82);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  backdrop-filter: blur(1px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FFF4E4;
+}
+::-webkit-scrollbar-thumb {
+  background: #2455D6;
+  border-radius: 4px;
+  border: 2px solid #FFF4E4;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #182B49;
+}

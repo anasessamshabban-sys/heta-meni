@@ -1,0 +1,107 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile and personal preferences",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "User ID" },
+        "displayName": { "type": "string", "description": "Display name" },
+        "email": { "type": "string", "description": "Email address" },
+        "wakeHour": { "type": "number", "description": "Wake hour for daily window" },
+        "sleepHour": { "type": "number", "description": "Sleep hour for daily window" },
+        "focusDuration": { "type": "number", "description": "Focus duration in minutes" },
+        "breakDuration": { "type": "number", "description": "Break duration in minutes" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid"]
+    },
+    "Task": {
+      "title": "Task",
+      "description": "Daily study or life task item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string", "maxLength": 200 },
+        "subject": { "type": "string", "maxLength": 80 },
+        "estimatedMinutes": { "type": "number" },
+        "completed": { "type": "boolean" },
+        "isPriority": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "completedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "title", "completed"]
+    },
+    "Event": {
+      "title": "Event",
+      "description": "Weekly timetable commitment or study slot",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string", "maxLength": 150 },
+        "dayOfWeek": { "type": "number" },
+        "startTime": { "type": "string", "pattern": "^[0-2][0-9]:[0-5][0-9]$" },
+        "durationMinutes": { "type": "number" },
+        "subject": { "type": "string", "maxLength": 80 },
+        "isFixed": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "title", "dayOfWeek", "startTime", "durationMinutes"]
+    },
+    "ProjectNote": {
+      "title": "ProjectNote",
+      "description": "Notes, ideas and next steps in personal projects",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "category": { "type": "string", "enum": ["design", "coding", "medical", "ideas", "free"] },
+        "title": { "type": "string", "maxLength": 200 },
+        "content": { "type": "string", "maxLength": 5000 },
+        "nextSteps": { "type": "string", "maxLength": 1000 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "category", "title"]
+    },
+    "FocusSession": {
+      "title": "FocusSession",
+      "description": "Completed focus session log",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "durationMinutes": { "type": "number" },
+        "taskTitle": { "type": "string", "maxLength": 200 },
+        "type": { "type": "string", "enum": ["focus", "break"] },
+        "completedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "durationMinutes", "type"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile document"
+    },
+    "/users/{userId}/tasks/{taskId}": {
+      "schema": "Task",
+      "description": "User daily tasks"
+    },
+    "/users/{userId}/events/{eventId}": {
+      "schema": "Event",
+      "description": "User weekly schedule events and lessons"
+    },
+    "/users/{userId}/notes/{noteId}": {
+      "schema": "ProjectNote",
+      "description": "User projects, medical thoughts, design and coding notes"
+    },
+    "/users/{userId}/sessions/{sessionId}": {
+      "schema": "FocusSession",
+      "description": "User logged focus sessions"
+    }
+  }
+}

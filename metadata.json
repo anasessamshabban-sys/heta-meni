@@ -1,0 +1,6 @@
+{
+  "name": "حِتّة منّي | Hetta Menny",
+  "description": "مساحة دراسية وتنظيمية شخصية متكاملة بأسلوب الكولاج الورقي والتصميم التحريري العربي المبتكر",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
